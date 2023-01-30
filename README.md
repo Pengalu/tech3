@@ -1,9 +1,5 @@
-# Fabric Example Mod
+# Pengalu - Tech Mod Utility Project
+### Temporary ReadMe
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## Why?
+The goal of this mod is to provide basic utility blocks used generally in tech mods (ie. fluid mechanics) with high levels of compatability and balance based around vanilla gameplay.
