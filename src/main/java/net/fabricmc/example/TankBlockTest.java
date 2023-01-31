@@ -12,14 +12,14 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 
 
-public class ContainerBlockTest extends TickedBlockEntityProvider {
-    public ContainerBlockTest(Settings settings){
+public class TankBlockTest extends TickedBlockEntityProvider {
+    public TankBlockTest(Settings settings){
         super(settings);
 
     }
     
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FluidContainer(pos, state,1000);
+        return new FluidTank(pos, state,1000);
     }
 
     

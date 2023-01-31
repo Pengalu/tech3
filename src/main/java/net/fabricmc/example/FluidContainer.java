@@ -10,13 +10,19 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-public class FluidContainer extends BlockEntity implements BlockEntityTicker {
+
+public abstract class FluidContainer extends BlockEntity implements BlockEntityTicker {
+    /*  
+     * Provides an abstract class for a block which can contain fluids. Usecases include storage tanks/barrels, pipes, or smelters which take fluid as an intake.
+     * 
+     * TODO: good docs for this
+     */
     private Fluid storedFluid;
-    private int mBCapacity;
+    protected int mBCapacity;
 
     @Override
     public void writeNbt(NbtCompound nbt) {
-        // Save the current value of the number to the nbt
+        // Save the current capacity of this block to nbt
         nbt.putInt("mbCapacity", mBCapacity);
  
         super.writeNbt(nbt);
@@ -29,15 +35,19 @@ public class FluidContainer extends BlockEntity implements BlockEntityTicker {
         mBCapacity = nbt.getInt("mbCapacity");
     }
 
-    public FluidContainer(BlockPos pos, BlockState state, int mbCapacity){
-        super(ExampleMod.FLUID_CONTAINER, pos, state);
-        this.mBCapacity=mbCapacity;
-        ExampleMod.LOGGER.info("Placed blockentity");
-    }
-    public FluidContainer(BlockPos pos, BlockState state){
-        super(ExampleMod.FLUID_CONTAINER, pos, state);
-        this.mBCapacity=1000;
-        ExampleMod.LOGGER.info("Placed blockentity");
+   // public FluidContainer(BlockPos pos, BlockState state, int mbCapacity){
+        //super(ExampleMod.FLUID_CONTAINER, pos, state);
+        //this.mBCapacity=mbCapacity;
+    //}
+    //public FluidContainer(BlockPos pos, BlockState state){
+     //   super(ExampleMod.FLUID_CONTAINER, pos, state);
+
+
+    //}
+    public FluidContainer(BlockPos pos, BlockState state,BlockEntityType T){
+        super(T, pos, state);
+                
+
     }
     public Fluid getStoredFluid(){
         return(storedFluid);
@@ -47,7 +57,7 @@ public class FluidContainer extends BlockEntity implements BlockEntityTicker {
     
 
     public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
-        
+        //placeholder, override with an implementation that fits the usecase of the class.
         
     }
 }
