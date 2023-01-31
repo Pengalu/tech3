@@ -12,12 +12,12 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 
 
-public class ContainerBlockTest extends Block implements BlockEntityProvider{
+public class ContainerBlockTest extends TickedBlockEntityProvider {
     public ContainerBlockTest(Settings settings){
         super(settings);
 
     }
-    @Override
+    
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new FluidContainer(pos, state);
     }

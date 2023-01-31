@@ -10,7 +10,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-public class FluidContainer extends BlockEntity {
+public class FluidContainer extends BlockEntity implements BlockEntityTicker {
     private Fluid storedFluid;
     private int mBCapacity;
 
