@@ -19,7 +19,7 @@ public class ContainerBlockTest extends TickedBlockEntityProvider {
     }
     
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FluidContainer(pos, state);
+        return new FluidContainer(pos, state,1000);
     }
 
     

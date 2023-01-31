@@ -29,6 +29,11 @@ public class FluidContainer extends BlockEntity implements BlockEntityTicker {
         mBCapacity = nbt.getInt("mbCapacity");
     }
 
+    public FluidContainer(BlockPos pos, BlockState state, int mbCapacity){
+        super(ExampleMod.FLUID_CONTAINER, pos, state);
+        this.mBCapacity=mbCapacity;
+        ExampleMod.LOGGER.info("Placed blockentity");
+    }
     public FluidContainer(BlockPos pos, BlockState state){
         super(ExampleMod.FLUID_CONTAINER, pos, state);
         this.mBCapacity=1000;
@@ -42,7 +47,7 @@ public class FluidContainer extends BlockEntity implements BlockEntityTicker {
     
 
     public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
-        ExampleMod.LOGGER.info("Tick");
+        
         
     }
 }

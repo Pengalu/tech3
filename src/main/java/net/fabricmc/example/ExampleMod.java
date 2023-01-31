@@ -23,7 +23,7 @@ public class ExampleMod implements ModInitializer {
 	public static final ContainerBlockTest CONTAINER_BLOCK_TEST = new ContainerBlockTest(FabricBlockSettings.of(Material.STONE).hardness(4.0f));
 	public static final BlockEntityType<FluidContainer> FLUID_CONTAINER = Registry.register(
         Registries.BLOCK_ENTITY_TYPE,
-        new Identifier("tutorial", "demo_block_entity"),
+        new Identifier("tech_utils", "container_entity"),
         FabricBlockEntityTypeBuilder.create(FluidContainer::new, CONTAINER_BLOCK_TEST).build()
     );
 	@Override
@@ -31,8 +31,8 @@ public class ExampleMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-        Registry.register(Registries.BLOCK, new Identifier("tutorial", "example_block"), CONTAINER_BLOCK_TEST);
-        Registry.register(Registries.ITEM, new Identifier("tutorial", "example_block"), new BlockItem(CONTAINER_BLOCK_TEST, new Item.Settings()));
+        Registry.register(Registries.BLOCK, new Identifier("tech_utils", "container_block_test"), CONTAINER_BLOCK_TEST);
+        Registry.register(Registries.ITEM, new Identifier("tutorial", "container_block_test"), new BlockItem(CONTAINER_BLOCK_TEST, new Item.Settings()));
 		LOGGER.info("Hello Fabric world!");
 
 	}
