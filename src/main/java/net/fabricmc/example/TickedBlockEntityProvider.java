@@ -25,10 +25,10 @@ public abstract class TickedBlockEntityProvider extends Block implements BlockEn
 	}
 
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-		ExampleMod.LOGGER.info("getTicker()");
+		//ExampleMod.LOGGER.info("getTicker()");
 		return (world1, pos, state1, blockEntity) -> {
 			if (blockEntity instanceof BlockEntityTicker) {
-				ExampleMod.LOGGER.info("passed if");
+		//		ExampleMod.LOGGER.info("passed if");
 				((BlockEntityTicker) blockEntity).tick(world1, pos, state1, blockEntity); //i don't care
 			}
 		};
