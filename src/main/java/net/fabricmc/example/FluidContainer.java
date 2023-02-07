@@ -45,7 +45,8 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
     }
     public void setStoredFluid(Fluid newFluid){
         storedFluid = newFluid;
-        updateClient();    }
+        updateClient();  
+    }
     public void addLevelDroplets(int addDrops){
 
         setLevelDroplets(this.levelDroplets+addDrops);
@@ -61,6 +62,11 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
 
         }
         updateClient();
+    }
+    public int getLevelDroplets(){
+     
+        updateClient();
+        return(levelDroplets);
     }
     @Override
     public void writeNbt(NbtCompound nbt) {
@@ -125,15 +131,21 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
     }
     BlockState previousState;
     BlockState currentState;
-    public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
-        //placeholder, override with an implementation that fits the usecase of the class.
+    public void tickEssential(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+        //Contains debug stuff that should apply to all fluidcontainers
+     
         if(currentState != null){previousState=currentState;}else{previousState=state;}
         currentState=state;
        
         if(storedFluid != null && world.isClient){
 
-            ExampleMod.LOGGER.info(getFluidName(storedFluid));
+            //ExampleMod.LOGGER.info(getFluidName(storedFluid));
         }
+        tick(world, pos, state, blockEntity);
+    }
+    public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity){
+        //OVERRIDE WITH IMPLEMENTATION FOR SPECIFIC BLOCK ENTITY
         
+
     }
 }

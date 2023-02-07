@@ -22,14 +22,19 @@ public class TankBlockTest extends TickedBlockEntityProvider {
         super(settings);
 
     }
-    
+    private FluidTank associated;
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FluidTank(pos, state,1000);
+        return associated=new FluidTank(pos, state,1000);
     }
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
-            player.sendMessage(Text.of("Hello, world!"), false);
+            if(associated.getStoredFluid() != null && world.isClient){
+
+                //ExampleMod.LOGGER.info(getFluidName(storedFluid));
+            }
+            
+            player.sendMessage(Text.of(FluidContainer.getFluidName(associated.getStoredFluid())+" - "+associated.getLevelDroplets()+" Droplets"), true);
         }
  
         return ActionResult.SUCCESS;

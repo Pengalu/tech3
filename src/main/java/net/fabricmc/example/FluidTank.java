@@ -25,7 +25,7 @@ public class FluidTank extends FluidContainer {
     public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         //ExampleMod.LOGGER.info("Tick!");
         //No tick impl. yet
-        super.tick(world, pos, state, blockEntity);
+        super.tickEssential(world, pos, state, blockEntity);
     }
     
 }
