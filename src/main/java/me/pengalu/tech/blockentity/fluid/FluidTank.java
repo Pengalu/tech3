@@ -1,5 +1,5 @@
-package net.fabricmc.example;
-
+package me.pengalu.tech.blockentity.fluid;
+import me.pengalu.tech.ExampleMod;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

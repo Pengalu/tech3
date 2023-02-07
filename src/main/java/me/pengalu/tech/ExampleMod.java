@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package me.pengalu.tech;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -8,12 +8,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+import me.pengalu.tech.*;
+import me.pengalu.tech.blockentity.fluid.*;
 
 public class ExampleMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.

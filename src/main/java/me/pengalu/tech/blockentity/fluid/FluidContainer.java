@@ -1,13 +1,10 @@
-package net.fabricmc.example;
-import java.lang.System.Logger;
-
-import org.apache.commons.lang3.ObjectUtils.Null;
+package me.pengalu.tech.blockentity.fluid;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import me.pengalu.tech.ExampleMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -141,9 +138,9 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
 
             //ExampleMod.LOGGER.info(getFluidName(storedFluid));
         }
-        tick(world, pos, state, blockEntity);
+        this.worldTick(world, pos, state, blockEntity);
     }
-    public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity){
+    public void worldTick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity){
         //OVERRIDE WITH IMPLEMENTATION FOR SPECIFIC BLOCK ENTITY
         
 

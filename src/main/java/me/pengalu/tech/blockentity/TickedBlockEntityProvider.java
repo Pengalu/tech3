@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package me.pengalu.tech.blockentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
