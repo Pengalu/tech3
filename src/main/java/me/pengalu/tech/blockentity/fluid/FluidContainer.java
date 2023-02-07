@@ -3,6 +3,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import me.pengalu.tech.ExampleMod;
+import me.pengalu.tech.utils.FluidUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,13 +30,7 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
     protected int capacityDroplets;
     protected int levelDroplets;
     
-    public static String getFluidName(@NotNull Fluid fluid) {
-		return Text.translatable(fluid.getDefaultState().getBlockState().getBlock().getTranslationKey()).getString();
-	}
-    public static Fluid getFluidFromKey(@NotNull int rawId){
-        return(Registries.FLUID.get(rawId));
 
-    }
     public int getStoredFluidKey(){
         return(Registries.FLUID.getRawId(storedFluid));
 
@@ -84,7 +79,7 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
 
         super.readNbt(nbt);
         int storedFluidId= nbt.getInt("fluid");
-        storedFluid=getFluidFromKey(storedFluidId);
+        storedFluid=FluidUtils.getFluidFromKey(storedFluidId);
         capacityDroplets = nbt.getInt("capacityDroplets");
         levelDroplets = nbt.getInt("levelDroplets");
         updateClient();

@@ -8,6 +8,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import me.pengalu.tech.blockentity.TickedBlockEntityProvider;
+import me.pengalu.tech.utils.FluidUtils;
 import net.minecraft.block.BlockState;
 
 
@@ -28,7 +29,7 @@ public class TankBlockTest extends TickedBlockEntityProvider {
                 //ExampleMod.LOGGER.info(getFluidName(storedFluid));
             }
             
-            player.sendMessage(Text.of(FluidContainer.getFluidName(tank.getStoredFluid())+" - "+tank.getLevelDroplets()+" Droplets"), true);
+            player.sendMessage(Text.of(FluidUtils.getFluidName(tank.getStoredFluid())+" - "+tank.getLevelDroplets()+" Droplets"), true);
         }
  
         return ActionResult.SUCCESS;
