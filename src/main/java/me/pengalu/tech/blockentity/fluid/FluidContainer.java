@@ -22,29 +22,34 @@ import net.minecraft.world.World;
 
 public abstract class FluidContainer extends BlockEntity implements BlockEntityTicker {
     /*  
-     * Provides an abstract class for a block which can contain fluids. Usecases include storage tanks/barrels, pipes, or smelters which take fluid as an intake.
-     * 
      * TODO: good docs for this
      */
+    /**
+    * Provides an abstract class for a block which can contain fluids.
+    * Usecases include storage tanks/barrels, pipes, or smelters which take fluid as an intake.
+    * 
+    *
+    * @author  Pengalu
+    * @version 0.1
+    * @since   2023-07-02 
+    */
+    
     private Fluid storedFluid;
-    protected int capacityDroplets;
-    protected int levelDroplets;
+    protected long capacityDroplets;
+    protected long levelDroplets;
     
 
-    public int getStoredFluidKey(){
-        return(Registries.FLUID.getRawId(storedFluid));
 
-    }
     public void setStoredFluid(Fluid newFluid){
         storedFluid = newFluid;
         updateClient();  
     }
-    public void addLevelDroplets(int addDrops){
+    public void addLevelDroplets(long addDrops){
 
         setLevelDroplets(this.levelDroplets+addDrops);
 
     }
-    public void setLevelDroplets(int levelDroplets){
+    public void setLevelDroplets(long levelDroplets){
         if(this.capacityDroplets < this.levelDroplets){
 
             this.levelDroplets = levelDroplets;
@@ -55,7 +60,7 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
         }
         updateClient();
     }
-    public int getLevelDroplets(){
+    public long getLevelDroplets(){
      
         updateClient();
         return(levelDroplets);
@@ -65,9 +70,9 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
         // Save the current capacity of this block to nbt
         ExampleMod.LOGGER.info("WRITING NBT");
         //capacityDroplets=0;
-        nbt.putInt("capacityDroplets", capacityDroplets);
-        nbt.putInt("levelDroplets", levelDroplets);
-        nbt.putInt("fluid", getStoredFluidKey());
+        nbt.putLong("capacityDroplets", capacityDroplets);
+        nbt.putLong("levelDroplets", levelDroplets);
+        nbt.putLong("fluid", FluidUtils.getKeyFromFluid(storedFluid));
         super.writeNbt(nbt);
         updateClient();
 
@@ -78,9 +83,9 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
         ExampleMod.LOGGER.info("READING NBT");
 
         super.readNbt(nbt);
-        int storedFluidId= nbt.getInt("fluid");
-        storedFluid=FluidUtils.getFluidFromKey(storedFluidId);
-        capacityDroplets = nbt.getInt("capacityDroplets");
+        Long storedFluidId= nbt.getLong("fluid");
+        storedFluid=FluidUtils.getFluidFromKey(storedFluidId.intValue());
+        capacityDroplets = nbt.getLong("capacityDroplets");
         levelDroplets = nbt.getInt("levelDroplets");
         updateClient();
 
