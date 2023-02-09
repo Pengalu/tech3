@@ -19,20 +19,18 @@ import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-public abstract class FluidContainer extends BlockEntity implements BlockEntityTicker {
-    /*  
-     * TODO: good docs for this
-     */
     /**
     * Provides an abstract class for a block which can contain fluids.
-    * Usecases include storage tanks/barrels, pipes, or smelters which take fluid as an intake.
+    * Usecases include storage tanks/barrels, cauldrons, etc.
     * 
+    * For blocks which input/output fluid, implement FlowableFluidContainer (me.pengalu.tech.blockentity.fluid.FlowableFluidContainer)
     *
     * @author  Pengalu
     * @version 0.1
     * @since   2023-07-02 
     */
+public abstract class FluidContainer extends BlockEntity implements BlockEntityTicker {
+
     
     private Fluid storedFluid;
     protected long capacityDroplets;
