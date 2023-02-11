@@ -47,8 +47,13 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
         setLevelDroplets(this.levelDroplets+addDrops);
 
     }
+    public void subLevelDroplets(long subDrops){
+
+        setLevelDroplets(this.levelDroplets-subDrops);
+
+    }
     public void setLevelDroplets(long levelDroplets){
-        if(this.capacityDroplets < this.levelDroplets){
+        if(this.capacityDroplets< levelDroplets){
 
             this.levelDroplets = levelDroplets;
         }
@@ -108,7 +113,7 @@ public abstract class FluidContainer extends BlockEntity implements BlockEntityT
         return(storedFluid);
 
     }
-    private void updateClient(){
+    protected void updateClient(){
         if(currentState ==null)return;
         world.updateListeners(pos, previousState, currentState, Block.NOTIFY_LISTENERS);
     }   

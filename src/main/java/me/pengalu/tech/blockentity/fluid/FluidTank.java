@@ -15,13 +15,14 @@ public class FluidTank extends FlowableFluidContainer {
     public FluidTank(BlockPos pos, BlockState state, int capacityDroplets){
         super(pos, state,ExampleMod.FLUID_TANK);
 
-        this.capacityDroplets=capacityDroplets;
-       
+        this.capacityDroplets=5000;
+        this.levelDroplets=1000;
     }
     public FluidTank(BlockPos pos, BlockState state){
         super(pos, state,ExampleMod.FLUID_TANK);
-        this.capacityDroplets=(int) (1*FluidConstants.BUCKET);
-        
+        this.capacityDroplets=(int) (5*FluidConstants.BUCKET);
+        this.levelDroplets=1000;
+        this.updateClient();
     }
  
     @Override

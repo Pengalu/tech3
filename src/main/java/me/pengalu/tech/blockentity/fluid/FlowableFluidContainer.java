@@ -1,6 +1,7 @@
 package me.pengalu.tech.blockentity.fluid;
 
 import org.apache.http.impl.client.NullBackoffStrategy;
+import org.joml.Math;
 
 import me.pengalu.tech.ExampleMod;
 import net.minecraft.block.BlockState;
@@ -51,23 +52,39 @@ public class FlowableFluidContainer extends FluidContainer{
         
         return inputs;
     }
-    public void flowFluid(Direction direction, BlockPos position){
-        ExampleMod.LOGGER.info("searching...");
+    public void flowFluid(Direction direction, BlockPos position,FluidContainer me){
+       // ExampleMod.LOGGER.info("searching...");
         BlockPos flowPosition = position.offset(direction);
         BlockEntity targetEntity = world.getBlockEntity(flowPosition);
         if(targetEntity==null)return;
         if(!(targetEntity instanceof FluidContainer))return;
-        ExampleMod.LOGGER.info("FOUND A VALID TARGET");
+        FluidContainer targetContainer = (FluidContainer) targetEntity;
+        
+        long flowAmount = (long)getFlowRate();
+        
+        if(me.getLevelDroplets()-flowAmount<0){
+
+            flowAmount=me.getLevelDroplets();
+
+        }
+        if(flowAmount<0){
+            flowAmount=0;
+
+        }
+        ExampleMod.LOGGER.info(String.valueOf(me==targetContainer));
+      //  me.subLevelDroplets(flowAmount);
+        targetContainer.addLevelDroplets(flowAmount);
     }
     @Override
     public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         // TODO Auto-generated method stub
-        flowFluid(Direction.DOWN, pos);
+        //flowFluid(Direction.DOWN, pos);
     }
     @Override
     public void worldTick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity){
         //OVERRIDE WITH IMPLEMENTATION FOR SPECIFIC BLOCK ENTITY
-        flowFluid(Direction.DOWN, pos);
+        if(world.isClient)return;
+        flowFluid(Direction.DOWN, pos,(FluidContainer) blockEntity);
 
     }
 
